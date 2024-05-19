@@ -1,0 +1,30 @@
+    .navbar{
+        padding: 1.5rem;
+        background-color: #a5cef6;
+    }
+
+    .navbar-collapse{
+        align-items: center;
+        justify-content: start;
+    }
+
+     .icon{
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-right: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .nav-link{
+        font-size: 21px;
+
+    }
+
+    @media screen and (max-width: 575px){
+
+        .icon{
+            display: none;
+        }
+    }
+        
+    

@@ -1,0 +1,56 @@
+
+
+<div class="container mb-3 animate__animated animate__fadeInRightBig">
+
+    <div class="row">
+        <div class="col">
+            <button routerLink="/pacientes/nuevo" 
+            class=" btnA btn btn-outline-primary btn-lg">
+            <i class="fa-solid fa-plus faI"></i>
+            </button>
+            <div class="bloque">Agregar</div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container animate__animated animate__fadeInRightBig">
+    <div class="row">
+        <div class="col">
+            <h1>Lista de Pacientes</h1>
+            <hr>
+        
+            <table class="table animate__animated animate__fadeIn fast">
+                <thead class="table-primary">
+                  <tr >
+                    <th scope="col"></th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let paciente of pacientes; let i = index">
+                  <tr >
+                    
+                    <th class="textP" scope="row">{{i + 1}}</th>
+                    <td class="textP-1"><a class="enlaceNombre" [routerLink]="['/pacientes/paciente',paciente.id]">{{paciente.nombres}}</a></td>
+                    <td class="textP">{{paciente.cedula}}</td>
+                    <td class="textP">{{paciente.correo}}</td>
+                    <td class="d-flex justify-content-md-center">
+                        <button type="button" [routerLink]="['/pacientes',paciente.id]" class="btn btn-outline-primary botin "><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" (click)="borrar(i,paciente)" class="btn btn-outline-danger botin2"><i class="fa-solid fa-trash basura"></i></button>
+                    </td>
+                  </tr>
+        
+                </tbody>
+            </table> 
+            <div *ngIf="senal" class=" alerta alert alert-warning text-center mt-4 animate__animated animate__fadeIn">
+                <h5 class="alert-heading d-flex justify-content-md-center align-items-center">no hay pacientes</h5>
+                <i class="fa fa-exclamation fa-2x"></i>
+            </div>   
+        </div>
+    </div>
+  </div>
+
+    

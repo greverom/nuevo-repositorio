@@ -1,0 +1,16 @@
+
+::placeholder{
+    opacity: .5;
+}
+
+.form-group{
+    margin-top: 10px;
+}
+.boton {
+    background-color: rgb(70, 135, 209);
+    border: none;
+}
+
+.boton:hover{
+    background-color: rgb(34, 106, 187);
+}
