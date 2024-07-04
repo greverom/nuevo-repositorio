@@ -1,0 +1,30 @@
+<section class="container mt-5">
+    <h2 class="mb-4 text-center">Productos en la Base de Datos</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered custom-striped-table">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name | titlecase }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td>
+              <a class="btn btn-sm btn-primary me-2" 
+                 (click)="navigateToEdit(product.key, $event)">Editar</a>
+                 <button class="btn btn-sm btn-secondary" 
+                  (click)="deleteProduct(product.key, $event)"><i class="fas fa-trash-alt"></i>
+                  Eliminar
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>

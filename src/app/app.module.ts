@@ -10,10 +10,18 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { DataBaseProductosComponent } from './components/data-base-productos/data-base-productos.component';
+import { ConfiguracionProductoComponent } from './components/configuracion-producto/configuracion-producto.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DataBaseProductosComponent,
+    ConfiguracionProductoComponent,
+    HomeComponent,
+    EditarProductoComponent
   ],
   imports: [
     BrowserModule,

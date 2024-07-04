@@ -1,14 +1,9 @@
-<div>
-  <input [(ngModel)]="productName" placeholder="Product name">
-  <input [(ngModel)]="productDescription" placeholder="Product description">
-  <input [(ngModel)]="productPrice" placeholder="Product price" type="number">
-  <button (click)="addProduct()">Add Product</button>
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Configuración de Productos</h1>
+    <div class="d-flex justify-content-center mb-4">
+      <a class="btn btn-outline-primary me-2" routerLink="/config-product">Agregar Productos</a>
+      <a class="btn btn-outline-secondary" routerLink="/database-products">Ver Productos en Base de Datos</a>
+    </div>
+    <router-outlet></router-outlet>
 </div>
-
-
-<ul>
-  <li *ngFor="let product of products | async">
-    {{ product.name }} - {{ product.description }} - ${{ product.price }}
-    <button (click)="deleteProduct(product.key)">Delete</button>
-  </li>
-</ul>
