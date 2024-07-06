@@ -1,0 +1,125 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, #ffecd2, #fcb69f);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.gradient-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.container {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.row {
+  width: 100%;
+}
+
+.card.bg-blur {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #333;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 25px;
+}
+
+
+.form-control {
+  color: #333;
+  border: 2px solid #fcb69f;
+  background: transparent;
+}
+
+.text-danger {
+  color: red !important;
+  margin-top: 5px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 67%;
+  right: 18px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #c26b4e;
+}
+
+.btn-outline-light {
+  color: #fcb69f;
+  border: 2px solid #fcb69f;
+  background: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-light:hover {
+  background-color: #fcb69f;
+  color: white;
+}
+
+h2.fw-bold {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #c26b4e;
+}
+
+.form-label {
+  margin-bottom: 3px;
+  margin-left: 15px;
+  color: brown;
+}
+
+.form-outline {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form-outline .text-danger {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 0.875em;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(220, 164, 95, 0.5);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-outline-brown {
+  color: brown;
+  border: 2px solid brown;
+  background: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-brown:hover {
+  background-color: brown;
+  color: white;
+}
+
+.text-brown {
+  color: brown;
+}

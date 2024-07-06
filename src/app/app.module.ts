@@ -9,11 +9,15 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataBaseProductosComponent } from './components/data-base-productos/data-base-productos.component';
 import { ConfiguracionProductoComponent } from './components/configuracion-producto/configuracion-producto.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { EditarProductoComponent } from './components/editar-producto/editar-pro
     DataBaseProductosComponent,
     ConfiguracionProductoComponent,
     HomeComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +37,14 @@ import { EditarProductoComponent } from './components/editar-producto/editar-pro
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltipModule
+
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

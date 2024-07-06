@@ -1,9 +1,25 @@
-
-<div class="container mt-5">
+  
+  <div *ngIf="showHeader" class="container-fluid mt-5 pastel-bg">
     <h1 class="mb-4 text-center">Configuración de Productos</h1>
     <div class="d-flex justify-content-center mb-4">
-      <a class="btn btn-outline-primary me-2" routerLink="/config-product">Agregar Productos</a>
-      <a class="btn btn-outline-secondary" routerLink="/database-products">Ver Productos en Base de Datos</a>
+      
+      <a class="btn btn-outline-primary-custom me-2" 
+          routerLink="/config-product" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{ exact: true }">Agregar Productos</a>
+      
+      <a class="btn btn-outline-secondary-custom" 
+          routerLink="/database-products" 
+          routerLinkActive="active" 
+          [routerLinkActiveOptions]="{ exact: true }">Productos</a>
+
+      <button class="btn btn-outline-danger ms-auto" 
+              (click)="logout()">Cerrar Sesión
+      </button>
+
     </div>
+  </div>
+
+  <div class="container mt-2">
     <router-outlet></router-outlet>
-</div>
+  </div>

@@ -7,14 +7,15 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-editar-producto',
   templateUrl: './editar-producto.component.html',
-  styleUrl: './editar-producto.component.css'
+  styleUrls: ['./editar-producto.component.css']
 })
 export class EditarProductoComponent implements OnInit {
   product: Product = {
     key: '',
     name: '',
     description: '',
-    price: null
+    price: 0,
+    quantity: 0
   };
 
   constructor(
@@ -24,14 +25,13 @@ export class EditarProductoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    
     const key = this.route.snapshot.paramMap.get('key');
     if (key) {
       this.dataService.getProduct(key).subscribe((product: Product | null) => {
         if (product) {
           this.product = { ...product, key }; 
         } else {
-          
-          console.error('Producto no encontrado');
           this.router.navigate(['/database-products']);
         }
       });
@@ -39,12 +39,17 @@ export class EditarProductoComponent implements OnInit {
   }
 
   updateProduct() {
+
     if (this.product.key) {
+
       this.dataService.updateProduct(this.product.key, {
         name: this.product.name,
         description: this.product.description,
-        price: this.product.price
+        price: this.product.price,
+        quantity: this.product.quantity
+
       }).then(() => {
+
         Swal.fire({
           icon: 'success',
           title: 'Producto Actualizado',
@@ -54,7 +59,9 @@ export class EditarProductoComponent implements OnInit {
         }).then(() => {
           this.router.navigate(['/database-products']);
         });
+
       }).catch(error => {
+
         Swal.fire(
           'Error!',
           'Hubo un problema al actualizar el producto.',

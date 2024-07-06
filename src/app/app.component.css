@@ -1,0 +1,36 @@
+.pastel-bg {
+    background-color: #f1c68a;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.btn-outline-primary-custom {
+    background-color: #ffffff;
+    color: #1f1f20; 
+    border: 1px solid #aa7e24;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-outline-primary-custom:hover,
+  .btn-outline-primary-custom.active {
+    background-color: #ffa07a; 
+    color: #ffffff; 
+  }
+
+  .btn-outline-secondary-custom:hover,
+  .btn-outline-secondary-custom.active {
+    background-color: #ffa07a; 
+    color: #ffffff; 
+}
+  
+  .btn-outline-secondary-custom {
+    background-color: #ffffff; 
+    color: #6c757d; 
+    border: 1px solid #966328; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .btn-outline-secondary-custom:hover {
+    background-color: #ffa07a; 
+    color: #ffffff; 
+  }

@@ -6,6 +6,7 @@
         "Firestore",
         "fortawesome",
         "Swal",
+        "sweetalert",
         "titlecase"
     ]
 }

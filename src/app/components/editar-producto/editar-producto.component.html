@@ -13,6 +13,10 @@
         <label for="price" class="form-label">Precio:</label>
         <input type="number" id="price" class="form-control" [(ngModel)]="product.price" name="price" required>
       </div>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Cantidad:</label>
+        <input type="number" id="quantity" class="form-control" [(ngModel)]="product.quantity" name="quantity" required>
+      </div>
       <button class="btn btn-primary w-35" type="submit">Actualizar Producto</button>
     </form>
   </section>

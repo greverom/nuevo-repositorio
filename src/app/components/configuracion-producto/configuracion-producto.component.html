@@ -1,18 +1,24 @@
 <section class="container mt-5">
-    <h2 class="mb-4 text-center">Configuración Producto</h2>
+    <h2 class="mb-5 text-center">Agregar Producto</h2>
     <form (ngSubmit)="addProduct()">
       <div class="mb-3">
-        <label for="name" class="form-label">Nombre:</label>
+        <label for="name" class="form-label">Nombre del Producto:</label>
         <input type="text" id="name" class="form-control" [(ngModel)]="product.name" name="name" required>
       </div>
       <div class="mb-3">
-        <label for="description" class="form-label">Descripción:</label>
+        <label for="description" class="form-label">Descripción del Producto:</label>
         <input type="text" id="description" class="form-control" [(ngModel)]="product.description" name="description" required>
       </div>
       <div class="mb-3">
         <label for="price" class="form-label">Precio:</label>
         <input type="number" id="price" class="form-control" [(ngModel)]="product.price" name="price" required>
       </div>
-      <button class="btn btn-success w-35" type="submit">Agregar Producto</button>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Cantidad:</label>
+        <input type="number" id="quantity" class="form-control" [(ngModel)]="product.quantity" name="quantity" required>
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+      <button class="btn btn-success-custom w-38" type="submit">Agregar Producto</button>
+    </div>
     </form>
   </section>

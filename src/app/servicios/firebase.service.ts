@@ -15,7 +15,6 @@ export class DataService {
     return this.db.list('/products').push(product);
   }
 
-
   getProducts(): Observable<Product[]> {
     return this.db.list<Product>('/products').snapshotChanges().pipe(
       map(actions => 
@@ -24,7 +23,6 @@ export class DataService {
     );
   }
 
-  
   getProduct(key: string): Observable<Product | null> {
     return this.db.object<Product>(`/products/${key}`).valueChanges().pipe(
       map(product => {
@@ -36,13 +34,9 @@ export class DataService {
     );
   }
 
- 
-
   updateProduct(key: string, updatedProduct: Product) {
-    return this.db.list('/products').update(key, updatedProduct);
+    return this.db.object(`/products/${key}`).update(updatedProduct);
   }
-
-
 
   deleteProduct(key: string) {
     return this.db.list('/products').remove(key);

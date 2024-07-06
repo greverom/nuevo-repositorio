@@ -9,3 +9,14 @@
       -webkit-appearance: none;
        margin: 0;
 }
+
+  .btn-success-custom{
+    background-color: #fafafa; 
+    border: 1px solid #ffa07a; 
+    color: #c16c4a; 
+  }
+
+  .btn-success-custom:hover{
+    background-color: #ffa07a; 
+    color: #ffffff;
+  }

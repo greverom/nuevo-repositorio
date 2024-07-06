@@ -1,0 +1,67 @@
+<section class="gradient-custom">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-11 col-md-8 col-lg-6 xxl-5">
+        <div class="card bg-blur" style="border-radius: 1rem;">
+          <div class="card-body text-center">
+
+            <h2 class="fw-bold text-uppercase">Registrarse</h2>
+
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+              <div class="form-outline form-white text-start">
+                <label for="firstName" class="form-label">Nombre</label>
+                <input id="firstName" formControlName="firstName" type="text" class="form-control form-control-lg">
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                  <div *ngIf="firstName.errors?.['required']" class="text-danger">El nombre es requerido.</div>
+                </div>
+              </div>
+
+              <div class="form-outline form-white text-start">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input id="lastName" formControlName="lastName" type="text" class="form-control form-control-lg">
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <div *ngIf="lastName.errors?.['required']" class="text-danger">El apellido es requerido.</div>
+                </div>
+              </div>
+
+              <div class="form-outline form-white mb-4 text-start">
+                <label for="phone" class="form-label">Teléfono</label>
+                <input id="phone" formControlName="phone" type="number" class="form-control form-control-lg">
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
+                  <div *ngIf="phone.errors?.['required']">El teléfono es requerido.</div>
+                  <div *ngIf="phone.errors?.['pattern']">El teléfono debe tener 10 dígitos.</div>
+                </div>
+              </div>
+
+              <div class="form-outline form-white text-start">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" formControlName="email" type="email" class="form-control form-control-lg">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                  <div *ngIf="email.errors?.['required']" class="text-danger">El email es requerido.</div>
+                  <div *ngIf="email.errors?.['email']" class="text-danger">El email no es válido.</div>
+                </div>
+              </div>
+
+              <div class="form-outline form-white text-start position-relative">
+                <label for="password" class="form-label">Password</label>
+                <input id="password" formControlName="password" [type]="passwordFieldType" class="form-control form-control-lg">
+                <i *ngIf="hasPasswordValue()" class="toggle-password fa" [ngClass]="{'fa-eye-slash': passwordFieldType === 'password', 'fa-eye': passwordFieldType === 'text'}" (click)="togglePasswordVisibility()"></i>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <div *ngIf="password.errors?.['required']" class="text-danger">La contraseña es requerida.</div>
+                  <div *ngIf="password.errors?.['minlength']" class="text-danger">La contraseña debe tener al menos 6 caracteres.</div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-light btn-lg mt-3 px-5">Register</button>
+              </div>
+            </form>
+            <div class="mt-4">
+              <a routerLink="/login" class="text-brown fw-bold">¿Ya tienes una cuenta? Iniciar Sesión</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

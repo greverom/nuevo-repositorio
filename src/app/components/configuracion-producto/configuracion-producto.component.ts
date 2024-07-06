@@ -1,25 +1,60 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/producto.model';
 import { DataService } from '../../servicios/firebase.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-configuracion-producto',
   templateUrl: './configuracion-producto.component.html',
-  styleUrl: './configuracion-producto.component.css'
+  styleUrls: ['./configuracion-producto.component.css']
 })
 export class ConfiguracionProductoComponent {
 
   product: Product = {
     name: '',
     description: '',
-    price: null
+    price: 0,
+    quantity: 0
   };
+
   constructor(private dataService: DataService) {}
 
-  addProduct() {
-    this.dataService.addProduct(this.product).then(() => {
+  validateProduct(product: Product): boolean {
+    return product.name.trim() !== '' 
+        && product.description.trim() !== '' 
+        && product.price !== null 
+        && product.quantity !== null;
+  }
 
-      this.product = { name: '', description: '', price: null };
+  addProduct() {
+    if (!this.validateProduct(this.product)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Todos los campos son obligatorios.',
+        timer: 2000,
+        showConfirmButton: false
+      });
+      return;
+    }
+
+    this.dataService.addProduct(this.product).then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Producto Agregado',
+        text: 'El producto ha sido agregado exitosamente',
+        timer: 2000,
+        showConfirmButton: false
+      }).then(() => {
+        this.product = { name: '', description: '', price: 0, quantity: 0 };
+      });
+    }).catch(error => {
+      Swal.fire(
+        'Error!',
+        'Hubo un problema al agregar el producto.',
+        'error'
+      );
+      console.error('Error al agregar el producto:', error);
     });
   }
 }

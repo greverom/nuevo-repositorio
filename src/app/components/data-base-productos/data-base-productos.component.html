@@ -1,27 +1,38 @@
 <section class="container mt-5">
-    <h2 class="mb-4 text-center">Productos en la Base de Datos</h2>
-    <div class="table-responsive">
+    <h2 class="mb-4 text-center">Productos Agregados</h2>
+    <div *ngIf="loading" class="text-center mt-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="!loading" class="table-responsive">
       <table class="table table-bordered custom-striped-table">
         <thead class="table-primary">
           <tr>
+
             <th scope="col">Nombre</th>
             <th scope="col">Descripción</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio Unidad</th>
+            <th scope="col">Opciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let product of products">
             <td>{{ product.name | titlecase }}</td>
             <td>{{ product.description }}</td>
+            <td>{{ product.quantity }}</td>
             <td>{{ product.price | currency }}</td>
             <td>
-              <a class="btn btn-sm btn-primary me-2" 
-                 (click)="navigateToEdit(product.key, $event)">Editar</a>
-                 <button class="btn btn-sm btn-secondary" 
-                  (click)="deleteProduct(product.key, $event)"><i class="fas fa-trash-alt"></i>
-                  Eliminar
-                </button>
+              <button class="btn btn-sm btn-link text-success p-0 me-2 icon-button" 
+                      (click)="navigateToEdit(product.key)" matTooltip="Editar Producto" matTooltipPosition="above">
+                      <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn btn-sm btn-link text-secondary p-0 icon-button" 
+                      (click)="deleteProduct(product.key, $event)" 
+                      matTooltip="Eliminar Producto" matTooltipPosition="above">
+                      <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>

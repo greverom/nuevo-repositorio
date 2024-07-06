@@ -1,0 +1,22 @@
+.form-label {
+    text-align: left;
+  }
+  
+  .forgot-password-link:hover {
+    color: #fff !important;
+  }
+  
+  .text-start {
+    text-align: left !important;
+  }
+  
+  .form-control {
+    color: white;
+    border: 2px solid white;
+    background: transparent;
+  }
+  
+  .form-control::placeholder {
+    color: white;
+    opacity: 0.5;
+  }

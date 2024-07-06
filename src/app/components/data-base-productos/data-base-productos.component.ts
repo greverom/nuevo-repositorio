@@ -7,21 +7,24 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-data-base-productos',
   templateUrl: './data-base-productos.component.html',
-  styleUrl: './data-base-productos.component.css'
+  styleUrls: ['./data-base-productos.component.css']
 })
 export class DataBaseProductosComponent implements OnInit {
   products: Product[] = [];
+  loading: boolean = true;
 
-  constructor(private dataService: DataService,
-              private router: Router
-  ) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.dataService.getProducts().subscribe(products => {
       this.products = products;
+      this.loading = false; // Datos cargados, ocultar spinner
+    }, error => {
+      console.error('Error al cargar productos:', error);
+      this.loading = false; // En caso de error, ocultar spinner también
     });
   }
-
+  
 
   navigateToEdit(key: string | null | undefined, event?: MouseEvent) {
     if (event) {
@@ -35,8 +38,11 @@ export class DataBaseProductosComponent implements OnInit {
   }
 
 
-deleteProduct(key: string | null | undefined, event: MouseEvent) {
+
+  deleteProduct(key: string | null | undefined, event: MouseEvent) {
+
     event.stopPropagation(); 
+
     if (key) {
       Swal.fire({
         title: '¿Estás seguro?',
@@ -46,7 +52,9 @@ deleteProduct(key: string | null | undefined, event: MouseEvent) {
         confirmButtonColor: '#28a745', 
         cancelButtonColor: '#6c757d', 
         confirmButtonText: 'Eliminarlo!'
+
       }).then((result) => {
+
         if (result.isConfirmed) {
           this.dataService.deleteProduct(key).then(() => {
             Swal.fire(
@@ -54,7 +62,9 @@ deleteProduct(key: string | null | undefined, event: MouseEvent) {
               'El producto ha sido eliminado.',
               'success'
             );
+
           }).catch(error => {
+
             Swal.fire(
               'Error!',
               'Hubo un problema al eliminar el producto.',
@@ -64,6 +74,7 @@ deleteProduct(key: string | null | undefined, event: MouseEvent) {
           });
         }
       });
+
     } else {
       console.error('Invalid product key:', key);
     }
