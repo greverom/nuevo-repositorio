@@ -11,7 +11,20 @@ export class DataService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  private getPastelColor(name: string): string {
+    const colors = [
+      '#FFB3BA', '#FFDFBA', '#FFFFBA', '#BAFFC9', '#BAE1FF', '#FFC4E1'
+    ];
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const index = Math.abs(hash % colors.length);
+    return colors[index];
+  }
+
   addProduct(product: Product) {
+    product.backgroundColor = this.getPastelColor(product.name);
     return this.db.list('/products').push(product);
   }
 
@@ -35,6 +48,9 @@ export class DataService {
   }
 
   updateProduct(key: string, updatedProduct: Product) {
+    if (!updatedProduct.backgroundColor) {
+      updatedProduct.backgroundColor = this.getPastelColor(updatedProduct.name);
+    }
     return this.db.object(`/products/${key}`).update(updatedProduct);
   }
 
