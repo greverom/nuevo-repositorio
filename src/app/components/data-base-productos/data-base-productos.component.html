@@ -9,7 +9,7 @@
       <table class="table table-bordered custom-striped-table">
         <thead class="table-primary">
           <tr>
-
+            <th scope="col">Imagen</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripción</th>
             <th scope="col">Cantidad</th>
@@ -19,6 +19,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let product of products">
+            <td>
+              <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="Imagen del Producto" width="50">
+            </td>
             <td>{{ product.name | titlecase }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.quantity }}</td>

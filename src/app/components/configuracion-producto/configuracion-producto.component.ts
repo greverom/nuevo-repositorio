@@ -16,6 +16,7 @@ export class ConfiguracionProductoComponent {
     price: 0,
     quantity: 0
   };
+  selectedFile: File | null = null;
 
   constructor(private dataService: DataService) {}
 
@@ -24,6 +25,10 @@ export class ConfiguracionProductoComponent {
         && product.description.trim() !== '' 
         && product.price !== null 
         && product.quantity !== null;
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 
   addProduct() {
@@ -38,7 +43,7 @@ export class ConfiguracionProductoComponent {
       return;
     }
 
-    this.dataService.addProduct(this.product).then(() => {
+    this.dataService.addProduct1(this.product, this.selectedFile).then(() => {
       Swal.fire({
         icon: 'success',
         title: 'Producto Agregado',
@@ -47,6 +52,7 @@ export class ConfiguracionProductoComponent {
         showConfirmButton: false
       }).then(() => {
         this.product = { name: '', description: '', price: 0, quantity: 0 };
+        this.selectedFile = null;
       });
     }).catch(error => {
       Swal.fire(

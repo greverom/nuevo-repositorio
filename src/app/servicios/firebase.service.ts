@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { Product } from '../models/producto.model';
 
 @Injectable({
@@ -9,7 +10,9 @@ import { Product } from '../models/producto.model';
 })
 export class DataService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase,
+              private storage: AngularFireStorage
+  ) { }
 
   private getPastelColor(name: string): string {
     const colors = [
@@ -23,10 +26,43 @@ export class DataService {
     return colors[index];
   }
 
+
   addProduct(product: Product) {
     product.backgroundColor = this.getPastelColor(product.name);
     return this.db.list('/products').push(product);
   }
+
+ addProduct1(product: Product, file: File | null): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (file) {
+        const filePath = `products/${new Date().getTime()}_${file.name}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file);
+
+        task.snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              product.imageUrl = url;
+              product.backgroundColor = this.getPastelColor(product.name);
+              this.db.list('/products').push(product).then(() => {
+                resolve();
+              }).catch(error => {
+                reject(error);
+              });
+            });
+          })
+        ).subscribe();
+      } else {
+        product.backgroundColor = this.getPastelColor(product.name);
+        this.db.list('/products').push(product).then(() => {
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
+      }
+    });
+  }
+
 
   getProducts(): Observable<Product[]> {
     return this.db.list<Product>('/products').snapshotChanges().pipe(
@@ -53,6 +89,42 @@ export class DataService {
     }
     return this.db.object(`/products/${key}`).update(updatedProduct);
   }
+
+  updateProduct1(key: string, updatedProduct: Product, file: File | null): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (file) {
+        const filePath = `products/${new Date().getTime()}_${file.name}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file);
+
+        task.snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              updatedProduct.imageUrl = url;
+              if (!updatedProduct.backgroundColor) {
+                updatedProduct.backgroundColor = this.getPastelColor(updatedProduct.name);
+              }
+              this.db.object(`/products/${key}`).update(updatedProduct).then(() => {
+                resolve();
+              }).catch(error => {
+                reject(error);
+              });
+            });
+          })
+        ).subscribe();
+      } else {
+        if (!updatedProduct.backgroundColor) {
+          updatedProduct.backgroundColor = this.getPastelColor(updatedProduct.name);
+        }
+        this.db.object(`/products/${key}`).update(updatedProduct).then(() => {
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
+      }
+    });
+  }
+  
 
   deleteProduct(key: string) {
     return this.db.list('/products').remove(key);

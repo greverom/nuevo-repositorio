@@ -15,8 +15,10 @@ export class EditarProductoComponent implements OnInit {
     name: '',
     description: '',
     price: 0,
-    quantity: 0
+    quantity: 0,
+    imageUrl: ''
   };
+  selectedFile: File | null = null;
 
   constructor(
     private dataService: DataService,
@@ -36,6 +38,10 @@ export class EditarProductoComponent implements OnInit {
         }
       });
     }
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 
   updateProduct() {
@@ -71,4 +77,28 @@ export class EditarProductoComponent implements OnInit {
       });
     }
   }
+
+  updateProduct1() {
+    if (this.product.key) {
+      this.dataService.updateProduct1(this.product.key, this.product, this.selectedFile).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Producto Actualizado',
+          text: 'El producto ha sido actualizado exitosamente',
+          timer: 2000,
+          showConfirmButton: false
+        }).then(() => {
+          this.router.navigate(['/database-products']);
+        });
+      }).catch((error: any) => {
+        Swal.fire(
+          'Error!',
+          'Hubo un problema al actualizar el producto.',
+          'error'
+        );
+        console.error('Error al actualizar el producto:', error);
+      });
+    }
+  }
+  
 }
