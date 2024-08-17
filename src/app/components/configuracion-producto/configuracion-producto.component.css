@@ -10,6 +10,11 @@
        margin: 0;
 }
 
+.botones{
+  gap: 2rem;
+
+}
+
   .btn-success-custom{
     background-color: #fafafa; 
     border: 1px solid #ffa07a; 
@@ -19,4 +24,25 @@
   .btn-success-custom:hover{
     background-color: #ffa07a; 
     color: #ffffff;
+  }
+
+  .btn-secondary {
+    background-color: #cccccc;
+    border: 1px solid #999999;
+    color: #333333;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #999999;
+    color: #ffffff;
+  }
+
+  @media (max-width: 576px) {
+    .botones {
+      margin-bottom: 4rem !important; /* Fuerza un margen inferior más grande */
+    }
+  
+    .btn {
+      margin-bottom: 4rem !important; /* Fuerza un margen inferior entre los botones */
+    }
   }

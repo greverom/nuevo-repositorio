@@ -1,5 +1,5 @@
 .container {
-    max-width: 900px;
+    max-width: 100%;
     margin: auto;
   }
   
@@ -47,7 +47,53 @@
     color: #000000; 
   }
 
+
+  @media (max-width: 768px) {
+    /* Ocultar tabla en pantallas pequeñas */
+    .d-md-block {
+      display: none !important;
+    }
+    
+    /* Mostrar tarjetas en pantallas pequeñas */
+    .d-md-none {
+      display: flex !important;
+    }
   
+    .card {
+      width: 80%;
+      margin: auto;
+      border: 1px solid #c7c7c7;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-img-top {
+      width: 80%;
+      margin: auto;
+      max-height: 200px;
+      object-fit: cover;
+    }
+    
+    .card-body {
+      padding: 15px;
+    }
+    
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+    
+    .card-text {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    .card .btn {
+      font-size: 0.875rem;
+      padding: 5px 10px;
+    }
+  }
   
   
 

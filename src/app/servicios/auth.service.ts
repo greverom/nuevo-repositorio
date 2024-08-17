@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { from, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { User } from '../models/usuario.model';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
@@ -35,6 +35,20 @@ export class AuthService {
   login(email: string, password: string) {
     return from(this.afAuth.signInWithEmailAndPassword(email, password));
   }
+
+  isLoggedIn(): Observable<boolean> {
+    return this.afAuth.authState.pipe(
+        map(user => {
+            if (user) {
+                localStorage.setItem('user', JSON.stringify(user));
+                return true;
+            } else {
+                localStorage.removeItem('user');
+                return false;
+            }
+        })
+    );
+}
   
 
   logout(): Observable<void> {

@@ -1,0 +1,119 @@
+/* Estilos generales para las tarjetas de videos */
+.card {
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+
+  video {
+    width: 100%;
+    height: 100%; /* Asegura que el video ocupe todo el espacio disponible */
+    object-fit: fill; /* Asegura que el video se ajuste al contenedor, expandiéndose si es necesario */
+}
+  
+  .card-body {
+    display: flex;
+    justify-content: space-between; /* Asegura que los botones estén separados */
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .btn-danger {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  .d-flex.justify-content-end {
+    margin-bottom: 20px; /* Añade espacio entre el botón y el título de la página */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  /* Estilos para manejar la disposición en pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .card-body {
+      flex-direction: column;
+      gap: 10px; /* Añade un espacio entre los botones en pantallas pequeñas */
+    }
+  
+    .btn-danger, .btn-secondary {
+      width: 50%; /* Hacer que los botones ocupen todo el ancho */
+      text-align: center;
+    }
+  
+    video {
+      max-height: 150px; /* Reduce la altura máxima del video en pantallas pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  
+    .card-img-top {
+      width: 100%;
+      height: auto;
+      margin: 0 auto 10px auto; /* Centra la imagen y añade un margen inferior */
+    }
+  
+    video {
+      width: 100%;
+      height: auto; /* Asegura que el video mantenga su proporción */
+      object-fit: cover; /* Mantiene el video ajustado al contenedor sin distorsionar */
+      max-height: 200px; /* Aumenta la altura máxima para que se vea mejor en pantallas pequeñas */
+      border-bottom: 1px solid #ddd; /* Añade una línea divisoria entre el video y el contenido */
+    }
+  
+    .card-body {
+      padding: 10px 15px;
+      text-align: center; /* Centra el texto y los botones */
+    }
+  
+    .btn-danger {
+      width: 48%; /* Hace que los botones ocupen el 48% del ancho del contenedor */
+      margin: auto;
+      margin-bottom: 5px;
+      padding: 6px 10px;
+      font-size: 14px; 
+    }
+  
+    .btn-secondary {
+      width: 40%; /* Hacer que el botón ocupe todo el ancho disponible en pantallas pequeñas */
+      text-align: center;
+    }
+  }
+  

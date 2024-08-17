@@ -12,22 +12,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataBaseProductosComponent } from './components/data-base-productos/data-base-productos.component';
 import { ConfiguracionProductoComponent } from './components/configuracion-producto/configuracion-producto.component';
-import { HomeComponent } from './components/pages/home/home.component';
+
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { VerImagenesComponent } from './pages/ver-imagenes/ver-imagenes.component';
+import { VerVideosComponent } from './pages/ver-videos/ver-videos.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataBaseProductosComponent,
     ConfiguracionProductoComponent,
-    HomeComponent,
     EditarProductoComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerImagenesComponent,
+    VerVideosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

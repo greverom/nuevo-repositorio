@@ -1,36 +1,241 @@
 .pastel-bg {
-    background-color: #f1c68a;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+  background-color: #f1c68a;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pastel-bg h1{
+  margin-top: 3.5rem;
+  color: #ff7f50;
+  font-size: 4rem;
+  cursor: pointer;
+  font-family: 'Pacifico', cursive;
+}
+.custom-margin-left {
+  margin: auto; /* Puedes ajustar este valor según lo que necesites */
+}
 
 .btn-outline-primary-custom {
-    background-color: #ffffff;
-    color: #1f1f20; 
-    border: 1px solid #aa7e24;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-outline-primary-custom:hover,
-  .btn-outline-primary-custom.active {
-    background-color: #ffa07a; 
-    color: #ffffff; 
+  background-color: #ffffff;
+  color: #1f1f20; 
+  border: 1px solid #aa7e24;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-primary-custom:hover,
+.btn-outline-primary-custom.active {
+  background-color: #ffa07a; 
+  color: #ffffff; 
+}
+
+.btn-outline-secondary-custom:hover,
+.btn-outline-secondary-custom.active {
+  background-color: #ffa07a; 
+  color: #ffffff; 
+}
+
+.btn-outline-secondary-custom {
+  background-color: #ffffff; 
+  color: #6c757d; 
+  border: 1px solid #966328; 
+  transition: background-color 0.3s ease; 
+}
+
+.btn-outline-secondary-custom:hover {
+  background-color: #ffa07a; 
+  color: #ffffff; 
+}
+
+.logout-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
+}
+
+.btn-outline-danger-custom {
+  background-color: #ffffff;
+  color: #dc3545; 
+  border: 1px solid #dc3545;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-danger-custom:hover,
+.btn-outline-danger-custom.active {
+  background-color: #dc3545; 
+  color: #ffffff; 
+}
+
+.custom-modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Fondo oscuro translúcido */
+}
+
+.custom-modal.show {
+  display: block; /* Mostrar cuando se active */
+}
+
+.custom-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.custom-modal-header, .custom-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px; /* Espaciado en la parte inferior */
+}
+
+.custom-modal-title {
+  margin: 0;
+  color: #333; /* Color del título */
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.custom-modal-close {
+  color: #aaa;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.custom-modal-close:hover,
+.custom-modal-close:focus {
+  color: black;
+}
+
+.custom-modal-body {
+  margin-top: 15px;
+  margin-bottom: 20px; /* Espacio adicional entre el input y los botones */
+}
+
+.custom-modal-body input[type="file"] {
+  border: 2px dashed #aaa; /* Borde punteado */
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.custom-modal-body input[type="file"]::file-selector-button {
+  color: #2b74b7;
+  background-color: #f2f4f6;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-modal-body input[type="file"]:hover {
+  border-color: #007bff; /* Cambia el color del borde al hacer hover */
+}
+
+.custom-modal-footer button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.custom-modal-footer .btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.custom-modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.custom-modal-footer .btn-primary {
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.custom-modal-footer .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .pastel-bg {
+    padding: 15px;
+    font-size: 14px; /* Reduce el tamaño de la fuente */
   }
 
-  .btn-outline-secondary-custom:hover,
-  .btn-outline-secondary-custom.active {
-    background-color: #ffa07a; 
-    color: #ffffff; 
-}
-  
+  .pastel-bg h1{
+    font-size: 3rem;
+  }
+
+  .btn-outline-primary-custom,
   .btn-outline-secondary-custom {
-    background-color: #ffffff; 
-    color: #6c757d; 
-    border: 1px solid #966328; 
-    transition: background-color 0.3s ease; 
+    padding: 8px 12px; /* Reduce el padding de los botones */
+    font-size: 14px;   /* Reduce el tamaño de la fuente de los botones */
   }
-  
-  .btn-outline-secondary-custom:hover {
-    background-color: #ffa07a; 
-    color: #ffffff; 
+
+  .custom-modal-content {
+    width: 90%; /* Aumenta el ancho del modal para pantallas pequeñas */
   }
+}
+
+/* Estilos para pantallas muy pequeñas (movil) */
+@media (max-width: 480px) {
+  .pastel-bg {
+    padding: 10px;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .pastel-bg h1{
+    font-size: 2.2rem;
+  }
+
+  .d-flex.flex-wrap.justify-content-center.align-items-center {
+    flex-direction: row;
+    gap: 8px; /* Reduce el espacio entre los botones */
+    margin-left: 12px; 
+  }
+
+  .btn-outline-primary-custom,
+  .btn-outline-secondary-custom,
+  .btn-outline-danger-custom {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 6px 8px; /* Reduce el padding para botones más compactos */
+    font-size: 12px; /* Reduce el tamaño de la fuente */
+    text-align: center; /* Asegura que el texto esté centrado */
+  }
+
+  .ms-auto {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center; /* Centra el botón de cerrar sesión */
+  }
+
+  .btn-outline-danger-custom {
+    font-size: 14px;
+    padding: 6px 12px;
+    justify-content: center; /* Asegura que el contenido dentro del botón esté centrado */
+  }
+
+  .custom-modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+}

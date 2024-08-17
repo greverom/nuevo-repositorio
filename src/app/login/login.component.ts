@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
             timer: 2000,
             showConfirmButton: false
           }).then(() => {
-            this.router.navigate(['/database-products']);
+            this.router.navigate(['/']);
           });
         },
         error: (error) => {

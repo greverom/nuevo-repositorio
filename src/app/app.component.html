@@ -1,25 +1,64 @@
-  
-  <div *ngIf="showHeader" class="container-fluid mt-5 pastel-bg">
-    <h1 class="mb-4 text-center">Configuración de Productos</h1>
-    <div class="d-flex justify-content-center mb-4">
-      
-      <a class="btn btn-outline-primary-custom me-2" 
-          routerLink="/config-product" 
-          routerLinkActive="active" 
-          [routerLinkActiveOptions]="{ exact: true }">Agregar Productos</a>
-      
-      <a class="btn btn-outline-secondary-custom" 
-          routerLink="/database-products" 
-          routerLinkActive="active" 
-          [routerLinkActiveOptions]="{ exact: true }">Productos</a>
-
-      <button class="btn btn-outline-danger ms-auto" 
-              (click)="logout()">Cerrar Sesión
+<div *ngIf="showHeader" class="container-fluid pastel-bg">
+  <h1 class="mb-5 text-center" (click)="goToHome()">Dulce Canela</h1>
+  <div class="d-flex flex-wrap justify-content-center align-items-center mb-3 custom-margin-left">
+    
+    <!-- Botón Productos con menú desplegable -->
+    <div class="dropdown me-3">
+      <button class="btn btn-outline-primary-custom dropdown-toggle" type="button" id="dropdownProductos" data-bs-toggle="dropdown" aria-expanded="false">
+        Productos
       </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownProductos">
+        <li><a class="dropdown-item" routerLink="/config-product">Agregar Productos</a></li>
+        <li><a class="dropdown-item" routerLink="/database-products">Ver Productos</a></li>
+      </ul>
+    </div>
 
+    <!-- Botón Imágenes con menú desplegable -->
+    <div class="dropdown me-3">
+      <button class="btn btn-outline-primary-custom dropdown-toggle" type="button" id="dropdownImagenes" data-bs-toggle="dropdown" aria-expanded="false">
+        Imágenes
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownImagenes">
+        <li><a class="dropdown-item" routerLink="/ver-imagenes">Ver Imágenes</a></li>
+      </ul>
+    </div>
+
+    <!-- Botón Videos con menú desplegable -->
+    <div class="dropdown me-3">
+      <button class="btn btn-outline-primary-custom dropdown-toggle" type="button" id="dropdownVideos" data-bs-toggle="dropdown" aria-expanded="false">
+        Videos
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownVideos">
+        <li><a class="dropdown-item" (click)="openVideoModal()">Subir Videos</a></li>
+        <li><a class="dropdown-item" routerLink="/ver-videos">Ver Videos</a></li>
+      </ul>
+    </div>
+
+    <!-- Botón de Cerrar Sesión al extremo derecho -->
+    <div class="logout-container">
+      <a class="btn btn-outline-danger-custom d-flex align-items-center" (click)="logout()">
+        <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
+      </a>
     </div>
   </div>
+</div>
 
-  <div class="container mt-2">
-    <router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Modal para subir video -->
+<div id="videoUploadModal" class="custom-modal" [class.show]="isModalOpen">
+  <div class="custom-modal-content">
+    <div class="custom-modal-header">
+      <h5 class="custom-modal-title">Subir Video</h5>
+      <span class="custom-modal-close" (click)="closeVideoModal()">&times;</span>
+    </div>
+    <div class="custom-modal-body">
+      <input type="file" (change)="onFileSelected($event)" accept="video/*" class="form-control">
+    </div>
+    <div class="custom-modal-footer d-flex justify-content-center">
+      <button class="btn btn-primary" (click)="uploadVideo()">Subir Video</button>
+    </div>
   </div>
+</div>

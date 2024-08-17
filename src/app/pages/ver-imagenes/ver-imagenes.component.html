@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Fotos Menú</h2>
+    <div *ngIf="loading" class="text-center mt-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="!loading && images.length === 0" class="text-center">
+      <p>No hay imágenes disponibles.</p>
+    </div>
+    <div *ngIf="!loading && images.length > 0" class="row">
+      <div *ngFor="let image of images" class="col-sm-4 col-md-4 col-lg-3 mb-4">
+        <div class="card">
+          <img [src]="image" class="card-img-top" alt="Imagen">
+          <div class="card-body text-center">
+            <button class="btn btn-danger btn-sm" (click)="deleteImage(image)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

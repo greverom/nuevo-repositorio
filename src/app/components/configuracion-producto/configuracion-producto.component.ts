@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../../models/producto.model';
 import { DataService } from '../../servicios/firebase.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion-producto',
@@ -18,7 +19,9 @@ export class ConfiguracionProductoComponent {
   };
   selectedFile: File | null = null;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,
+              private router: Router
+  ) {}
 
   validateProduct(product: Product): boolean {
     return product.name.trim() !== '' 
@@ -62,5 +65,9 @@ export class ConfiguracionProductoComponent {
       );
       console.error('Error al agregar el producto:', error);
     });
+  }
+
+  cancel() {
+    this.router.navigate(['/']); 
   }
 }

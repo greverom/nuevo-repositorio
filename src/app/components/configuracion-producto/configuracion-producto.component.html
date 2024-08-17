@@ -1,4 +1,4 @@
-<section class="container mt-5">
+<section class="container mt-5 mb-5">
     <h2 class="mb-5 text-center">Agregar Producto</h2>
     <form (ngSubmit)="addProduct()">
       <div class="mb-3">
@@ -21,8 +21,9 @@
         <label for="image" class="form-label">Imagen del Producto:</label>
         <input type="file" id="image" class="form-control" (change)="onFileSelected($event)">
       </div>
-      <div class="d-flex justify-content-center mt-5">
-      <button class="btn btn-success-custom w-38" type="submit">Agregar Producto</button>
-    </div>
+      <div class="botones d-flex justify-content-center mt-5">
+        <button class="btn btn-success-custom w-38" type="submit">Agregar Producto</button>
+        <button class="btn btn-secondary" type="button" (click)="cancel()">Cancelar</button>
+      </div>
     </form>
   </section>

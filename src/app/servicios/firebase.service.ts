@@ -124,6 +124,72 @@ export class DataService {
       }
     });
   }
+
+  addVideo(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (file) {
+        const filePath = `videos/${new Date().getTime()}_${file.name}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file);
+
+        task.snapshotChanges().pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              resolve(url);
+            }, error => reject(error));
+          })
+        ).subscribe();
+      } else {
+        reject('No file provided');
+      }
+    });
+  }
+
+  // Método para listar todas las imágenes en un directorio específico
+  listAllImages(): Promise<string[]> {
+    const imagesRef = this.storage.ref('products'); // Cambia la referencia a 'products'
+    return imagesRef.listAll().toPromise().then(result => {
+        console.log('Resultado de listAll:', result); // Depura el resultado de listAll
+        if (result && result.items && result.items.length > 0) {
+            const urls = result.items.map(item => item.getDownloadURL());
+            return Promise.all(urls);
+        } else {
+            console.log('No se encontraron elementos en la ruta especificada.');
+            return []; // Devuelve una lista vacía si no hay elementos
+        }
+    }).catch(error => {
+        console.error('Error al listar imágenes:', error);
+        return [];
+    });
+}
+
+  // Método para listar todos los videos en un directorio específico
+  listAllVideos(): Promise<string[]> {
+    const videosRef = this.storage.ref('videos'); // Asegúrate de que la referencia sea a 'videos'
+    return videosRef.listAll().toPromise().then(result => {
+        console.log('Resultado de listAll para videos:', result); // Depura el resultado de listAll
+        if (result && result.items && result.items.length > 0) {
+            const urls = result.items.map(item => item.getDownloadURL());
+            return Promise.all(urls);
+        } else {
+            console.log('No se encontraron videos en la ruta especificada.');
+            return []; // Devuelve una lista vacía si no hay elementos
+        }
+    }).catch(error => {
+        console.error('Error al listar videos:', error);
+        return [];
+    });
+}
+
+   // Método para eliminar un video de Firebase Storage
+   deleteVideo(videoUrl: string): Promise<void> {
+    return this.storage.refFromURL(videoUrl).delete().toPromise();
+  }
+
+  // Método para eliminar una imagen de Firebase Storage
+  deleteImage(imageUrl: string): Promise<void> {
+    return this.storage.refFromURL(imageUrl).delete().toPromise();
+  }
   
 
   deleteProduct(key: string) {

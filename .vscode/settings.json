@@ -5,6 +5,8 @@
         "firestore",
         "Firestore",
         "fortawesome",
+        "imagenes",
+        "Imagenes",
         "Swal",
         "sweetalert",
         "titlecase"

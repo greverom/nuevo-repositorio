@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from '../../servicios/firebase.service';
 import { Product } from '../../models/producto.model';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class DataBaseProductosComponent implements OnInit {
   products: Product[] = [];
   loading: boolean = true;
+  isMobileView: boolean = false;
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -19,13 +20,22 @@ export class DataBaseProductosComponent implements OnInit {
     this.dataService.getProducts().subscribe(products => {
       this.products = products;
       this.loading = false; // Datos cargados, ocultar spinner
+      this.checkScreenSize();
     }, error => {
       console.error('Error al cargar productos:', error);
       this.loading = false; // En caso de error, ocultar spinner también
     });
   }
   
-
+   // Listener para detectar cambios en el tamaño de la pantalla
+   @HostListener('window:resize', ['$event'])
+   onResize(event: any) {
+     this.checkScreenSize();
+   }
+ // Método para determinar si la pantalla es menor a 768px
+ checkScreenSize() {
+  this.isMobileView = window.innerWidth <= 768;
+}
   navigateToEdit(key: string | null | undefined, event?: MouseEvent) {
     if (event) {
       event.stopPropagation(); 

@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn btn-secondary btn-sm" (click)="exitVideos()">Salir de Videos</button>
+  </div>
+  <h2 class="mb-4 text-center">Todos los Videos</h2>
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="!loading && videos.length === 0" class="text-center">
+    <p>No hay videos disponibles.</p>
+  </div>
+  <div *ngIf="!loading && videos.length > 0" class="row">
+    <div *ngFor="let video of videos" class="col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card">
+        <video controls [src]="video" class="card-img-top" alt="Video"></video>
+        <div class="card-body text-center d-flex justify-content-around">
+          <button class="btn btn-danger btn-sm" (click)="deleteVideo(video)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

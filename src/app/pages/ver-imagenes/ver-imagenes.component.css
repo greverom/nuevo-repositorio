@@ -1,0 +1,62 @@
+/* Ajustes generales para las tarjetas de imágenes */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Ajusta esta altura según sea necesario */
+  object-fit: cover;
+}
+.card-body .btn.btn-danger {
+  color: #d9534f; /* Cambia el color del texto a rojo */
+  background-color: transparent; /* Fondo transparente */
+  border: 1px solid #d9534f; /* Añade un borde rojo */
+  padding: 6px 12px; /* Ajuste de padding */
+  font-size: 14px; /* Tamaño de la fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.card-body .btn.btn-danger:hover {
+  background-color: #d9534f; /* Fondo rojo al hacer hover */
+  color: white; /* Texto blanco al hacer hover */
+  cursor: pointer; /* Cambia el cursor a pointer */
+}
+
+/* Responsividad: Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+  .card-img-top {
+    max-height: 150px; /* Reduce la altura máxima para pantallas pequeñas */
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+/* Responsividad: Ajuste para pantallas muy pequeñas (móviles) */
+@media (max-width: 576px) {
+  .card-img-top {
+    max-height: 120px; /* Reduce aún más la altura máxima para móviles */
+  }
+
+  .card {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 90%; /* Limita el ancho de la tarjeta */
+    margin: 0 auto; /* Centra la tarjeta horizontalmente */
+  }
+
+  .card-img-top {
+    width: 100%; /* La imagen ocupará todo el ancho de la tarjeta */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 200px; /* Limita la altura máxima de la imagen */
+    object-fit: cover; /* Asegura que la imagen se recorte de manera uniforme si es necesario */
+  }
+
+  .container {
+    padding: 10px; /* Reduce el padding para ajustar el contenido en pantallas pequeñas */
+  }
+}

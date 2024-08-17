@@ -1,0 +1,13 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    margin-top: 3rem;
+  }
+  
+  .home-logo {
+    max-width: 80%;
+    height: auto;
+    max-height: 80vh; /* Limita la altura de la imagen */
+  }
