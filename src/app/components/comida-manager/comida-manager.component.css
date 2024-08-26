@@ -1,0 +1,127 @@
+.comida-manager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .comida-manager h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .comida-manager form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .comida-manager form div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .comida-manager label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .comida-manager input[type="text"],
+  .comida-manager input[type="number"],
+  .comida-manager textarea,
+  .comida-manager select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .comida-manager input[type="file"] {
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  .comida-manager button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .comida-manager button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  .comida-manager ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .comida-manager ul li {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .comida-manager ul li button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .comida-manager ul li button:hover {
+    background-color: #c82333;
+  }
+
+  .toast {
+    visibility: hidden; /* Ocultar por defecto */
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 57%;
+    bottom: 50%;
+    font-size: 17px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+  }
+  
+  .toast-success {
+    background-color: #4CAF50; /* Color de éxito */
+  }
+  
+  .toast-error {
+    background-color: #f44336; /* Color de error */
+  }
+  
+  /* Mostrar el toast */
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  

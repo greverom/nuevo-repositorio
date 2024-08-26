@@ -21,6 +21,8 @@ import { RegisterComponent } from './register/register.component';
 import { VerImagenesComponent } from './pages/ver-imagenes/ver-imagenes.component';
 import { VerVideosComponent } from './pages/ver-videos/ver-videos.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ComidaManagerComponent } from './components/comida-manager/comida-manager.component';
+import { MenuDulceCanelaComponent } from './components/menu-dulce-canela/menu-dulce-canela.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { HomeComponent } from './pages/home/home.component';
     RegisterComponent,
     VerImagenesComponent,
     VerVideosComponent,
-    HomeComponent
+    HomeComponent,
+    ComidaManagerComponent,
+    MenuDulceCanelaComponent
   ],
   imports: [
     BrowserModule,

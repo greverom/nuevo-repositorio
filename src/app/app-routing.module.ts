@@ -9,12 +9,16 @@ import { VerImagenesComponent } from './pages/ver-imagenes/ver-imagenes.componen
 import { VerVideosComponent } from './pages/ver-videos/ver-videos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './auth.guard';
+import { ComidaManagerComponent } from './components/comida-manager/comida-manager.component';
+import { MenuDulceCanelaComponent } from './components/menu-dulce-canela/menu-dulce-canela.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent,  canActivate: [AuthGuard] }, 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'config-product', component: ConfiguracionProductoComponent,  canActivate: [AuthGuard] },
+  { path: 'comida-manager', component: ComidaManagerComponent, canActivate: [AuthGuard] }, // Nueva ruta
+  { path: 'menu-dulce-canela', component: MenuDulceCanelaComponent, canActivate: [AuthGuard] },
   { path: 'database-products', component: DataBaseProductosComponent,  canActivate: [AuthGuard] },
   { path: 'editar-producto/:key', component: EditarProductoComponent,  canActivate: [AuthGuard] },
   { path: 'ver-imagenes', component: VerImagenesComponent,  canActivate: [AuthGuard] },

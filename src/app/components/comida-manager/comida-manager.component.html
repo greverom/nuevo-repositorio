@@ -1,0 +1,70 @@
+<div class="comida-manager">
+    <h2>Gestión de Comidas</h2>
+
+    <!-- Toast de Éxito -->
+<div id="toast-success" class="toast toast-success">
+    Producto guardado exitosamente.
+  </div>
+  
+  <!-- Toast de Error -->
+  <div id="toast-error" class="toast toast-error">
+    Error al procesar el producto.
+  </div>
+  
+    <form (ngSubmit)="onSubmit(comidaForm)" #comidaForm="ngForm">
+      <div>
+        <label for="category">Categoría</label>
+        <select id="category" name="category" [(ngModel)]="selectedCategory" required>
+          <option value="rollo">Rollos</option>
+          <option value="postres">Postres</option>
+          <option value="cake">Cake</option>
+          <!-- Agrega más categorías si es necesario -->
+        </select>
+        <div *ngIf="comidaForm.submitted && !comidaForm.controls['category']?.valid" class="error">
+          La categoría es requerida.
+        </div>
+      </div>
+  
+      <div>
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" [(ngModel)]="product.name" required>
+        <div *ngIf="comidaForm.submitted && !comidaForm.controls['name']?.valid" class="error">
+          El nombre es requerido.
+        </div>
+      </div>
+  
+      <div>
+        <label for="description">Descripción</label>
+        <textarea id="description" name="description" [(ngModel)]="product.description" required></textarea>
+        <div *ngIf="comidaForm.submitted && !comidaForm.controls['description']?.valid" class="error">
+          La descripción es requerida.
+        </div>
+      </div>
+  
+      <div>
+        <label for="price">Precio</label>
+        <input type="number" id="price" name="price" [(ngModel)]="product.price" required>
+        <div *ngIf="comidaForm.submitted && !comidaForm.controls['price']?.valid" class="error">
+          El precio es requerido.
+        </div>
+      </div>
+  
+      <div>
+        <label for="quantity">Cantidad</label>
+        <input type="number" id="quantity" name="quantity" [(ngModel)]="product.quantity" required>
+        <div *ngIf="comidaForm.submitted && !comidaForm.controls['quantity']?.valid" class="error">
+          La cantidad es requerida.
+        </div>
+      </div>
+  
+      <div>
+        <label for="image">Imagen</label>
+        <input type="file" id="image" (change)="onFileSelected($event)">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  
+
+  </div>
+  
