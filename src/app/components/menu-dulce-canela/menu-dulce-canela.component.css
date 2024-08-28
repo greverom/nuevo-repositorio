@@ -8,14 +8,15 @@
   }
   
   .menu-title {
-    font-size: 32px;
+    font-size: 3rem;
     margin-bottom: 40px;
     text-align: center;
   }
   
   .category-title {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 30px 0;
+    padding: 5px;
     text-align: center;
     background: linear-gradient(45deg, #A0522D, #D2B48C); /* Gradiente de café oscuro a café claro */
     -webkit-background-clip: text;
@@ -105,11 +106,7 @@
     margin-bottom: 30px;
   }
   
-  .category-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
+
   
   .food-scroll {
     display: flex;

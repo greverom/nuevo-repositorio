@@ -2,7 +2,7 @@
     <h2 class="menu-title">Menú</h2>
   
     <div *ngFor="let category of categories">
-      <h3 class="category-title">{{ category.name }}</h3>
+      <h3 class="category-title">{{ category.name | titlecase }}</h3>
   
       <div class="product-grid">
         <div *ngFor="let product of category.products" class="product-card">

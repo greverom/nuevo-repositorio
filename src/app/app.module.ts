@@ -24,6 +24,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ComidaManagerComponent } from './components/comida-manager/comida-manager.component';
 import { MenuDulceCanelaComponent } from './components/menu-dulce-canela/menu-dulce-canela.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { MenuDulceCanelaComponent } from './components/menu-dulce-canela/menu-du
     VerVideosComponent,
     HomeComponent,
     ComidaManagerComponent,
-    MenuDulceCanelaComponent
+    MenuDulceCanelaComponent,
+
   ],
   imports: [
     BrowserModule,
